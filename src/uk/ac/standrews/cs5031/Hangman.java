@@ -8,7 +8,7 @@ public class Hangman {
 
         boolean correct;
 
-        if (opts.wordsource == "") {
+        if (opts.wordsource.equals("")) {
 
             System.out.println("  1. Counties");
             System.out.println("  2. Countries");
@@ -42,12 +42,12 @@ public class Hangman {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        GameState g = null;
+        //GameState g = null;
         CommandOpts opts;
 
         opts = new CommandOpts(args);
 
-        doStuff(sc, opts, g);
+        doStuff(sc, opts, null);
 
     }
 }

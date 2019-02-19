@@ -1,5 +1,6 @@
 package uk.ac.standrews.cs5031;
 
+import java.lang.reflect.MalformedParametersException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,6 +17,11 @@ public class GameState {
     public Scanner sc = new Scanner(System.in).useDelimiter("\n");
 
     public GameState(String target, int g, int h) {
+        //check variables
+        if(g < 1 || h < 0) {
+            throw new MalformedParametersException();
+        }
+
         this.word = target;
         not = new ArrayList<Character>();
         got = new ArrayList<Character>();
@@ -44,15 +50,21 @@ public class GameState {
     }
 
     boolean guessLetter() {
-        int i;
-        char letter;
+
 
         System.out.print("Guess a letter or word (? for a hint): ");
 
         String str = sc.next().toLowerCase();
 
+        return guessLetter(str);
+    }
+
+    boolean guessLetter(String str) {
+        int i;
+        char letter;
+
         if (str.length() > 1) {
-            if (str==word) {
+            if (str.equals(word)) {
                 not.clear();
                 return true;
             } else return false;
@@ -78,6 +90,7 @@ public class GameState {
         wrong--;
         return false;
     }
+
 
     boolean won() {
         if (not.size() == 0) return true; else return false;
