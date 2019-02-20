@@ -93,19 +93,23 @@ public class GameState {
 
 
     boolean won() {
-        if (not.size() == 0) return true; else return false;
+        return not.size() == 0;
     }
 
     boolean lost() {
-        if (not.size() > 0 && wrong == 0) return true; else return false;
+        return not.size() > 0 && wrong == 0;
     }
 
     void hint() {
         if (h == 0) {
             System.out.println("No more hints allowed");
         }
+        else {
+            //fixed bug hint
+            System.out.print("Try: ");
+            System.out.println(not.get((int)(Math.random()*not.size())));
+            h--;
+        }
 
-        System.out.print("Try: ");
-        System.out.println(not.get((int)(Math.random()*not.size())));
     }
 }

@@ -28,8 +28,12 @@ public class Hangman {
 
             correct = g.guessLetter();
 
-            if (correct) System.out.println("Good guess!");
-            if (!correct) System.out.println("Wrong guess!");
+            if (correct) {
+                System.out.println("Good guess!");
+            }
+            else {
+                System.out.println("Wrong guess!");
+            }
         }
 
         if (g.won()) {
