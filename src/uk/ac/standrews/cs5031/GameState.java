@@ -64,7 +64,7 @@ public class GameState {
         char letter;
 
         if (str.length() > 1) {
-            if (str.equals(word)) {
+            if (str.toLowerCase().equals(word.toLowerCase())) {
                 not.clear();
                 return true;
             } else return false;

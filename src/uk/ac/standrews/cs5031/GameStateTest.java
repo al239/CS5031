@@ -52,6 +52,14 @@ public class GameStateTest {
     }
 
     @Test
+    public void guessWordTest() {
+        GameState gameState = new GameState(Words.words1[1], 10, 5);
+        gameState.guessLetter("caithness");
+        assertTrue(gameState.won());
+    }
+
+
+    @Test
     public void hintTest() {
         GameState gameState = new GameState(Words.words1[0], 10, 1);
         assertFalse(gameState.guessLetter("?"));
@@ -71,6 +79,15 @@ public class GameStateTest {
         gameState.showWord("a");
         assertEquals("-" + System.lineSeparator(), outContent.toString());
     }
+
+    @Test
+    public void showGuessedWordTest() {
+        GameState gameState = new GameState(Words.words1[0], 10, 5);
+        gameState.guessLetter("a");
+        gameState.showWord("a");
+        assertEquals("a" + System.lineSeparator(), outContent.toString());
+    }
+
 
     @Test
     public void winGameTest() {
